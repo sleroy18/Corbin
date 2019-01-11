@@ -37,5 +37,9 @@ namespace Corbin.Models
         public System.Data.Entity.DbSet<Corbin.Models.Video> Videos { get; set; }
 
         public System.Data.Entity.DbSet<Corbin.Models.RegisterEmail> RegisterEmails { get; set; }
+
+        public System.Data.Entity.DbSet<Corbin.Models.test> tests { get; set; }
+
+        public System.Data.Entity.DbSet<Corbin.Models.test2> test2 { get; set; }
     }
 }

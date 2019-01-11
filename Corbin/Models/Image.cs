@@ -9,15 +9,13 @@ namespace Corbin.Models
 {
     public class Image
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public bool IsMainImage { get; set; }
-        [Required]
         [StringLength(100)]
-        public string Name { get; set; }
-        [Required]
-        public string Location { get; set; }
-        public string ProjectId { get; set; }
+        public string Description { get; set; }
+        public string URL { get; set; }
+        public int ProjectId { get; set; }
+        [ForeignKey("ProjectId")]
         public Project Project { get; set; }
     }
 }

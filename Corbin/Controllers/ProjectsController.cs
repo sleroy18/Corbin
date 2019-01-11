@@ -10,6 +10,7 @@ using Corbin.Models;
 
 namespace Corbin.Controllers
 {
+    [Authorize]
     public class ProjectsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -17,8 +18,9 @@ namespace Corbin.Controllers
         // GET: Projects
         public ActionResult Index()
         {
-            var projects = db.Projects.Include(p => p.User);
-            return View(projects.ToList());
+            var projects = db.Projects.Include(p => p.User).ToList();
+            var projectVMList = AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(projects);
+            return View(projectVMList);
         }
 
         // GET: Projects/Details/5
@@ -28,18 +30,20 @@ namespace Corbin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Project project = db.Projects.Find(id);
-            if (project == null)
+            ProjectDetailsViewModel projectDetailsVM = AutoMapper.Mapper.Map<Project, ProjectDetailsViewModel>(db.Projects.Find(id));
+            if (projectDetailsVM == null)
             {
                 return HttpNotFound();
             }
-            return View(project);
+            return View(projectDetailsVM);
         }
 
         // GET: Projects/Create
         public ActionResult Create()
         {
             ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email");
+            //ViewBag.ApplicationUserId = User.Identity.Name;
+
             return View();
         }
 
@@ -48,17 +52,52 @@ namespace Corbin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,EntryDate,LastUpdated,ApplicationUserId")] Project project)
+        public ActionResult Create([Bind(Include = "Title,Description,ImageFile,VideoFile")] ProjectCreateViewModel projectCreateVM)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Projects.Add(project);
+                //Project project Map
+                db.Projects.Add(AutoMapper.Mapper.Map<ProjectCreateViewModel, Project>(projectCreateVM));
+
+                //create this after project is created
+                //return projectId with add(poject) and use as ProjectID
+                //foreach(ImageViewModel imageVM in projectCreateVM.images)
+                //{
+                //    Image image = new Image()
+                //    {
+                //        IsMainImage = imageVM.image.IsMainImage,
+                //        Location = imageVM.image.Location,
+                //        Name = imageVM.image.Name,
+
+                //    }
+                //    //save image file here
+                //    //add image to database
+                //}
+
+                //foreach (VideoViewModel videoVM in projectCreateVM.videos)
+                //{
+                //    Video video = new Video()
+                //    {
+                //        IsMainVideo = videoVM.video.IsMainVideo,
+                //        Location = videoVM.video.Location,
+                //        Name = videoVM.video.Name,
+
+                //    }
+                //    //save video file here
+                //    //add video to database
+                //}
+
+
+                //continue here
+                //db.Projects.Add(Project);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", project.ApplicationUserId);
-            return View(project);
+            catch
+            {
+                //ViewBag.ApplicationUserId = new SelectList(db.Users, "Id", "Email", project.applicationUserId);
+                return View(projectCreateVM);
+            }          
         }
 
         // GET: Projects/Edit/5

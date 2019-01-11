@@ -45,10 +45,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -171,6 +177,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\MappingConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -179,6 +186,8 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\RegisterEmailsController.cs" />
+    <Compile Include="Controllers\test2Controller.cs" />
+    <Compile Include="Controllers\testsController.cs" />
     <Compile Include="Controllers\VideosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -191,13 +200,32 @@
     <Compile Include="Migrations\201901070308249_length.Designer.cs">
       <DependentUpon>201901070308249_length.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901102326417_descrips.cs" />
+    <Compile Include="Migrations\201901102326417_descrips.Designer.cs">
+      <DependentUpon>201901102326417_descrips.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901110044489_test.cs" />
+    <Compile Include="Migrations\201901110044489_test.Designer.cs">
+      <DependentUpon>201901110044489_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901110049241_format.cs" />
+    <Compile Include="Migrations\201901110049241_format.Designer.cs">
+      <DependentUpon>201901110049241_format.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901110119258_updates.cs" />
+    <Compile Include="Migrations\201901110119258_updates.Designer.cs">
+      <DependentUpon>201901110119258_updates.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ProjectViewModels.cs" />
     <Compile Include="Models\RegisterEmail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Project.cs" />
+    <Compile Include="Models\test.cs" />
+    <Compile Include="Models\test2.cs" />
     <Compile Include="Models\Video.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -278,6 +306,16 @@
     <Content Include="Views\RegisterEmails\Details.cshtml" />
     <Content Include="Views\RegisterEmails\Edit.cshtml" />
     <Content Include="Views\RegisterEmails\Index.cshtml" />
+    <Content Include="Views\tests\Create.cshtml" />
+    <Content Include="Views\tests\Delete.cshtml" />
+    <Content Include="Views\tests\Details.cshtml" />
+    <Content Include="Views\tests\Edit.cshtml" />
+    <Content Include="Views\tests\Index.cshtml" />
+    <Content Include="Views\test2\Create.cshtml" />
+    <Content Include="Views\test2\Delete.cshtml" />
+    <Content Include="Views\test2\Details.cshtml" />
+    <Content Include="Views\test2\Edit.cshtml" />
+    <Content Include="Views\test2\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -301,6 +339,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901070308249_length.resx">
       <DependentUpon>201901070308249_length.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901102326417_descrips.resx">
+      <DependentUpon>201901102326417_descrips.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901110044489_test.resx">
+      <DependentUpon>201901110044489_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901110049241_format.resx">
+      <DependentUpon>201901110049241_format.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901110119258_updates.resx">
+      <DependentUpon>201901110119258_updates.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
