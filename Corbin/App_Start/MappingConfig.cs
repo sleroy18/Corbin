@@ -12,9 +12,10 @@ namespace Corbin.App_Start
         {
             AutoMapper.Mapper.Initialize(config =>
             {
-                config.CreateMap<Project, ProjectViewModel>().ReverseMap();
-                config.CreateMap<Project, ProjectCreateViewModel>().ReverseMap();
-                config.CreateMap<Project, ProjectDetailsViewModel>().ReverseMap();
+                config.CreateMap<MyProject, ProjectViewModel>().ReverseMap();
+                config.CreateMap<MyProject, ProjectCreateViewModel>().ReverseMap();
+                //config.CreateMap<Project, ProjectDetailsViewModel>().ReverseMap();
+                //config.CreateMap<Project, ProjectDeleteViewModel>().ReverseMap();
 
             });
         }

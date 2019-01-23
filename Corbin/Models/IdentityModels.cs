@@ -30,16 +30,14 @@ namespace Corbin.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Corbin.Models.Project> Projects { get; set; }
-
-        public System.Data.Entity.DbSet<Corbin.Models.Image> Images { get; set; }
-
-        public System.Data.Entity.DbSet<Corbin.Models.Video> Videos { get; set; }
-
         public System.Data.Entity.DbSet<Corbin.Models.RegisterEmail> RegisterEmails { get; set; }
 
-        public System.Data.Entity.DbSet<Corbin.Models.test> tests { get; set; }
+        public System.Data.Entity.DbSet<Corbin.Models.ProjectImage> ProjectImages { get; set; }
 
-        public System.Data.Entity.DbSet<Corbin.Models.test2> test2 { get; set; }
+        public System.Data.Entity.DbSet<Corbin.Models.ProjectVideo> ProjectVideos { get; set; }
+
+        public System.Data.Entity.DbSet<Corbin.Models.TestProject> TestProjects { get; set; }
+
+        public System.Data.Entity.DbSet<Corbin.Models.MyProject> MyProjects { get; set; }
     }
 }
